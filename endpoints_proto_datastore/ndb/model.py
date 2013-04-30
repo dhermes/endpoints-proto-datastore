@@ -717,8 +717,11 @@ class EndpointsModel(ndb.Model):
 
       value = getattr(entity, attr_name)
       if value is not None:
+        # TODO(dhermes): Remove this huge hack with a real solution.
+        if isinstance(prop, properties.EndpointsUserProperty):
+          value_set = False
         # Only overwrite null values
-        if isinstance(prop, EndpointsAliasProperty):
+        elif isinstance(prop, EndpointsAliasProperty):
           value_set = getattr(self, attr_name) is not None
         else:
           value_set = prop._name in self._values
