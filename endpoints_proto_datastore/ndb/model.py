@@ -24,7 +24,8 @@ from protorpc import messages
 
 from google.appengine.api import datastore_types
 from google.appengine.datastore import datastore_query
-from google.appengine.ext import endpoints
+import endpoints_patch as endpoints
+# from google.appengine.ext import endpoints
 from google.appengine.ext import ndb
 
 
