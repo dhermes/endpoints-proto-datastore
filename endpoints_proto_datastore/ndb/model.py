@@ -1049,8 +1049,8 @@ class EndpointsModel(ndb.Model):
           MessageFieldsSchema object (and verified as such).
 
     Returns:
-      The cached or created ResourceContainer specified by the fields and message.
-
+      The cached or created ResourceContainer specified by the fields and
+          message.
     """
 
     if fields is None:
@@ -1196,10 +1196,10 @@ class EndpointsModel(ndb.Model):
     """
     message_class = message.__class__
 
-    # The CombinedContainer is a result of ResourceContainers.
-    # Might need some better handling...
+    # The CombinedContainer is a result of ResourceContainers, defined in
+    # endpoints.api_config.
     if (message_class not in cls._proto_models.values() and
-        message_class.__name__ != "CombinedContainer"):
+        message_class.__name__ != 'CombinedContainer'):
       error_msg = ('The message is an instance of %s, which is a class this '
                    'EndpointsModel does not know how to process.' %
                    (message_class.__name__))

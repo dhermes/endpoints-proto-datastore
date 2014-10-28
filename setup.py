@@ -7,7 +7,8 @@ setuptools.setup(
     name='endpoints-proto-datastore',
     version='0.9.0',
     description='Google Cloud Endpoints Proto Datastore Library',
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
+    long_description=open(os.path.join(os.path.dirname(__file__),
+                                       'README.md')).read(),
     url='https://github.com/GoogleCloudPlatform/endpoints-proto-datastore',
     license='Apache',
     author='Danny Hermes',
@@ -21,4 +22,3 @@ setuptools.setup(
     ],
     packages=setuptools.find_packages(exclude=['examples*', 'docs*']),
 )
-

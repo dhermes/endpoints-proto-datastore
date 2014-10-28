@@ -102,7 +102,6 @@ class MyModel(EndpointsModel):
     return super(MyModel, self).order
 
 
-
 # Since we are using auth, we want to test with the Google APIs Explorer:
 # https://developers.google.com/apis-explorer/
 # By default, if allowed_client_ids is not specified, this is enabled by
