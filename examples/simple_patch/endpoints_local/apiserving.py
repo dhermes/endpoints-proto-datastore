@@ -66,10 +66,10 @@ import cStringIO
 import httplib
 import os
 
-from endpoints import api_backend_service
-from endpoints import api_config
-from endpoints import api_exceptions
-from endpoints import protojson
+from endpoints_local import api_backend_service
+from endpoints_local import api_config
+from endpoints_local import api_exceptions
+from endpoints_local import protojson
 from protorpc import messages
 from protorpc import remote
 from protorpc.wsgi import service as wsgi_service

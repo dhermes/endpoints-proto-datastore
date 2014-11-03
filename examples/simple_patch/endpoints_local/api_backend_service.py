@@ -29,9 +29,9 @@ except ImportError:
   import simplejson as json
 import logging
 
-from endpoints import api_backend
-from endpoints import api_config
-from endpoints import api_exceptions
+from endpoints_local import api_backend
+from endpoints_local import api_config
+from endpoints_local import api_exceptions
 from protorpc import message_types
 
 

@@ -51,8 +51,8 @@ except ImportError:
 import logging
 import re
 
-from endpoints import message_parser
-from endpoints import users_id_token
+from endpoints_local import message_parser
+from endpoints_local import users_id_token
 from protorpc import message_types
 from protorpc import messages
 from protorpc import remote

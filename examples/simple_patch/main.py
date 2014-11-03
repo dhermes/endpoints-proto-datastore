@@ -1,4 +1,4 @@
-import endpoints
+import endpoints_local
 
 from google.appengine.ext import ndb
 from protorpc import remote
@@ -16,7 +16,7 @@ class MyModel(EndpointsModel):
 DEFAULT_FIELDS = MyModel._DefaultFields()
 
 
-@endpoints.api(name='myapi', version='v1', description='My Little API')
+@endpoints_local.api(name='myapi', version='v1', description='My Little API')
 class MyApi(remote.Service):
 
   @MyModel.method(request_fields=DEFAULT_FIELDS,
@@ -35,7 +35,7 @@ class MyApi(remote.Service):
                   path='mymodel/{id}', http_method='GET', name='mymodel.get')
   def MyModelGet(self, my_model):
     if not my_model.from_datastore:
-      raise endpoints.NotFoundException('MyModel not found.')
+      raise endpoints_local.NotFoundException('MyModel not found.')
     return my_model
 
   @MyModel.query_method(path='mymodels', name='mymodel.list')
@@ -43,4 +43,4 @@ class MyApi(remote.Service):
     return query
 
 
-application = endpoints.api_server([MyApi], restricted=False)
+application = endpoints_local.api_server([MyApi], restricted=False)
