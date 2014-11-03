@@ -28,6 +28,8 @@ class MyApi(remote.Service):
   @MyModel.method(path='mymodel/{id}', request_fields=DEFAULT_FIELDS,
                   http_method='PATCH', name='mymodel.update')
   def MyModelPatch(self, my_model):
+    if not my_model.from_datastore:
+      raise endpoints_local.NotFoundException('MyModel not found.')
     my_model.put()
     return my_model
 

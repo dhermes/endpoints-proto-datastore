@@ -20,6 +20,7 @@
 
 
 import base64
+import json  # NOTE: This import is too specific.
 
 from protorpc import messages
 from protorpc import protojson
@@ -84,6 +85,17 @@ class EndpointsProtoJson(protojson.ProtoJson):
     padding_length = (pad_len_multiple -
                       (len(value) % pad_len_multiple)) % pad_len_multiple
     return value + pad_char * padding_length
+
+  def decode_message(self, message_type, encoded_message):
+    # NOTE: May also need to hack __decode_dictionary but this is
+    #       a much larger PITA.
+    message = super(EndpointsProtoJson, self).decode_message(
+        message_type, encoded_message)
+    keys = json.loads(encoded_message).keys()
+    unset_repeated_fields = [field.name for field in message_type.all_fields()
+                             if field.repeated and field.name not in keys]
+    object.__setattr__(message, '_unset_repeated_fields', unset_repeated_fields)
+    return message
 
   def decode_field(self, field, value):
     """Decode a JSON value to a python value.

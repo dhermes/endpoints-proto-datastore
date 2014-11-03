@@ -1230,7 +1230,12 @@ class EndpointsModel(ndb.Model):
           error_msg = ('Repeated attribute should be a list or tuple. '
                        'Received a %s.' % (value.__class__.__name__,))
           raise TypeError(error_msg)
-        to_add = [FromValue(value_property, element) for element in value]
+
+        if field.name in message._unset_repeated_fields:
+          # Skip repeated fields which are unset.
+          continue
+        else:
+          to_add = [FromValue(value_property, element) for element in value]
       else:
         to_add = FromValue(value_property, value)
 
