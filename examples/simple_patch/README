@@ -1,0 +1,4 @@
+export SDK_PATH="/home/dhermes/google-cloud-sdk"
+export ENDPOINTS="${SDK_PATH}/platform/google_appengine/lib/endpoints-1.0/endpoints"
+cp -r ${ENDPOINTS} endpoints_local
+git add endpoints_local
